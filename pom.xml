@@ -39,14 +39,30 @@
     </dependencies>
 
     <build>
-        <plugin>
+    
+        
+        <plugins>
+            <plugin>
+                <groupId>org.web3j</groupId>
+                <artifactId>web3j-maven-plugin</artifactId>
+                <version>${web3j-maven-plugin.version}</version>
+                <configuration>
+                    <soliditySourceFiles>
+                        <directory>src/main/solidity</directory>
+                        <includes>
+                            <include>*.sol</include>
+                        </includes>
+                    </soliditySourceFiles>
+                </configuration>
+            </plugin>
+            <plugin>
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
     <version>0.7.7.201606060606</version>
     <executions>
         <execution>
             <goals>
-                <goal>prepare-agent</goal>CodeOps
+                <goal>prepare-agent</goal>
             </goals>
         </execution>
         <execution>
@@ -75,21 +91,6 @@
         </execution>
     </executions>
 </plugin>
-        
-        <plugins>
-            <plugin>
-                <groupId>org.web3j</groupId>
-                <artifactId>web3j-maven-plugin</artifactId>
-                <version>${web3j-maven-plugin.version}</version>
-                <configuration>
-                    <soliditySourceFiles>
-                        <directory>src/main/solidity</directory>
-                        <includes>
-                            <include>*.sol</include>
-                        </includes>
-                    </soliditySourceFiles>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
